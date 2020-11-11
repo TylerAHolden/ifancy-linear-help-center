@@ -30,6 +30,18 @@ exports.handler = async (event, context, callback) => {
         }),
       };
     }
+    
+    if (!event.body) {
+      return {
+        headers: headers,
+        statusCode: 200,
+        body: JSON.stringify({
+          success: false,
+          msg:
+            'No body.',
+        }),
+      };
+    }
 
     const Config = JSON.parse(LINEAR_CONFIG);
 
