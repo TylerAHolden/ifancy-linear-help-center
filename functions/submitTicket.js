@@ -45,6 +45,14 @@ exports.handler = async (event, context, callback) => {
         }),
       };
     }
+    
+    if (!event.body) {
+      return {
+        headers: headers,
+        statusCode: 200,
+      };
+    }
+    
 
     const body = JSON.parse(event.body);
 
