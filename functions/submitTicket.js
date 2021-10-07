@@ -18,6 +18,7 @@ const headers = {
 };
 
 exports.handler = async (event, context, callback) => {
+  console.log(event);
   try {
     if (!LINEAR_CONFIG) {
       return {
@@ -207,6 +208,7 @@ exports.handler = async (event, context, callback) => {
   } catch (err) {
     const error = err?.response?.data?.errors || err?.response || err;
     console.log(error);
+    console.log(err);
     await sendErrorToSlack(error, 'TICKET BODY: ' + body);
     return {
       headers: headers,
