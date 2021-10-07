@@ -196,6 +196,8 @@ exports.handler = async (event, context, callback) => {
         ? Constants.ticketCreateSuccessMessage
         : Constants.ticketCreateFailMessage,
     };
+    
+    await sendErrorToSlack(error, 'NEW TICKET: ' + body?.title);
 
     return {
       headers: headers,
